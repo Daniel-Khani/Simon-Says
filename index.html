@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simon Says | Memory Game</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="game-container">
+
+        <!-- Header -->
+        <header class="header">
+            <p class="eyebrow">THE MEMORY CHALLENGE</p>
+
+            <h1>SIMON <span>SAYS</span></h1>
+
+            <p class="subtitle">
+                Watch. Remember. Repeat.
+            </p>
+        </header>
+
+        <!-- Game Statistics -->
+        <section class="stats" aria-label="Game statistics">
+
+            <div class="stat-box">
+                <span>LEVEL</span>
+                <strong id="level">0</strong>
+            </div>
+
+            <div class="stat-box">
+                <span>BEST SCORE</span>
+                <strong id="best">0</strong>
+            </div>
+
+        </section>
+
+        <!-- Game Options -->
+        <section class="game-options">
+
+            <div class="option-group">
+                <label for="difficulty">DIFFICULTY</label>
+
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <button id="sound-btn" type="button"
+                aria-pressed="true">
+                🔊 SOUND ON
+            </button>
+
+        </section>
+
+        <!-- Simon Board -->
+        <section class="simon-board" aria-label="Simon color buttons">
+
+            <button
+                class="color-button green"
+                data-color="green"
+                aria-label="Green"
+                type="button">
+            </button>
+
+            <button
+                class="color-button red"
+                data-color="red"
+                aria-label="Red"
+                type="button">
+            </button>
+
+            <button
+                class="color-button yellow"
+                data-color="yellow"
+                aria-label="Yellow"
+                type="button">
+            </button>
+
+            <button
+                class="color-button blue"
+                data-color="blue"
+                aria-label="Blue"
+                type="button">
+            </button>
+
+        </section>
+
+        <!-- Game Message -->
+        <p id="message" aria-live="polite">
+            Press Start to play!
+        </p>
+
+        <!-- Start Button -->
+        <button id="start-btn" type="button">
+            ▶ START GAME
+        </button>
+
+        <!-- Instructions -->
+        <p class="instructions">
+            Repeat the colors in the same order.
+            Each new level adds another color.
+        </p>
+
+        <footer class="footer">
+            FOCUS <span>•</span> REMEMBER <span>•</span> REPEAT
+        </footer>
+
+    </main>
+
+</body>
+</html>

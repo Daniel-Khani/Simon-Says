@@ -1,0 +1,574 @@
+/* ========================================
+   1. RESET AND THEME
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0b080f;
+    --card: #17101e;
+    --purple: #b84dff;
+    --pink: #ff4fa3;
+    --text: #ffffff;
+    --muted: #b9a9c6;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(151, 39, 210, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(255, 47, 135, 0.13),
+            transparent 35%
+        ),
+        var(--background);
+}
+
+/* ========================================
+   2. MAIN CARD
+======================================== */
+
+.game-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 26px;
+
+    text-align: center;
+
+    background: rgba(23, 16, 30, 0.96);
+    border: 1px solid rgba(184, 77, 255, 0.30);
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.50),
+        0 0 35px rgba(184, 77, 255, 0.08);
+}
+
+/* ========================================
+   3. HEADER
+======================================== */
+
+.eyebrow {
+    margin-bottom: 12px;
+
+    color: var(--purple);
+    font-size: 0.68rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    font-size: 2.35rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+h1 span {
+    color: var(--pink);
+
+    text-shadow:
+        0 0 10px rgba(255, 79, 163, 0.60),
+        0 0 25px rgba(255, 79, 163, 0.25);
+}
+
+.subtitle {
+    margin-top: 9px;
+    margin-bottom: 26px;
+
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   4. STATISTICS
+======================================== */
+
+.stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 14px 10px;
+
+    background: #21162a;
+    border: 1px solid #392445;
+    border-radius: 15px;
+}
+
+.stat-box span {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.stat-box strong {
+    display: block;
+
+    color: #f0b5ff;
+    font-size: 1.8rem;
+
+    text-shadow: 0 0 15px rgba(184, 77, 255, 0.35);
+}
+
+/* ========================================
+   5. GAME OPTIONS
+======================================== */
+
+.game-options {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.option-group label {
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#difficulty,
+#sound-btn {
+    min-height: 40px;
+    padding: 9px 12px;
+
+    color: white;
+    background: #24162e;
+
+    border: 1px solid #694080;
+    border-radius: 10px;
+
+    font-size: 0.8rem;
+}
+
+#difficulty {
+    cursor: pointer;
+}
+
+#difficulty option {
+    color: white;
+    background: #24162e;
+}
+
+#sound-btn {
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#sound-btn:hover {
+    background: #432454;
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   6. SIMON BOARD
+======================================== */
+
+.simon-board {
+    width: 100%;
+    max-width: 310px;
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto 23px;
+    padding: 12px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    background: #0e0a12;
+    border: 1px solid #35203f;
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.80),
+        0 0 20px rgba(184, 77, 255, 0.08);
+
+    transition: filter 0.2s;
+}
+
+/* ========================================
+   7. COLOR BUTTONS
+======================================== */
+
+.color-button {
+    min-width: 0;
+    min-height: 0;
+
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+
+    transition:
+        filter 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.color-button:hover {
+    filter: brightness(1.2);
+}
+
+.color-button:active {
+    transform: scale(0.96);
+}
+
+.color-button:focus-visible,
+#start-btn:focus-visible,
+#sound-btn:focus-visible,
+#difficulty:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+/* Green */
+
+.color-button.green {
+    background: #146b45;
+    border-radius: 100% 12px 12px 12px;
+}
+
+/* Red */
+
+.color-button.red {
+    background: #9d2445;
+    border-radius: 12px 100% 12px 12px;
+}
+
+/* Yellow */
+
+.color-button.yellow {
+    background: #a67b13;
+    border-radius: 12px 12px 12px 100%;
+}
+
+/* Blue */
+
+.color-button.blue {
+    background: #343fa6;
+    border-radius: 12px 12px 100% 12px;
+}
+
+/* ========================================
+   8. COLOR GLOW EFFECTS
+======================================== */
+
+.color-button.green.active {
+    background: #42ffab;
+    box-shadow:
+        0 0 15px #42ffab,
+        0 0 35px rgba(66, 255, 171, 0.8),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.color-button.red.active {
+    background: #ff477e;
+    box-shadow:
+        0 0 15px #ff477e,
+        0 0 35px rgba(255, 71, 126, 0.8),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.color-button.yellow.active {
+    background: #fff16b;
+    box-shadow:
+        0 0 15px #fff16b,
+        0 0 35px rgba(255, 241, 107, 0.8),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.color-button.blue.active {
+    background: #6b9dff;
+    box-shadow:
+        0 0 15px #6b9dff,
+        0 0 35px rgba(107, 157, 255, 0.8),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   9. MESSAGE
+======================================== */
+
+#message {
+    min-height: 24px;
+    margin-bottom: 18px;
+
+    color: #e6c8f5;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ========================================
+   10. START BUTTON
+======================================== */
+
+#start-btn {
+    width: 100%;
+    padding: 16px 20px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #a855f7,
+        #ec4899
+    );
+
+    color: white;
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 22px rgba(184, 77, 255, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+#start-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+
+    box-shadow:
+        0 8px 28px rgba(184, 77, 255, 0.35),
+        0 0 20px rgba(255, 79, 163, 0.15);
+}
+
+#start-btn:active {
+    transform: translateY(1px);
+}
+
+/* ========================================
+   11. INSTRUCTIONS AND FOOTER
+======================================== */
+
+.instructions {
+    margin-top: 18px;
+
+    color: #a997b7;
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.footer {
+    margin-top: 23px;
+
+    color: #766681;
+    font-size: 0.64rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.footer span {
+    color: var(--pink);
+}
+
+/* ========================================
+   12. GAME OVER EFFECT
+======================================== */
+
+.game-container.game-over {
+    animation: gameOverShake 0.4s ease-in-out;
+
+    border-color: rgba(255, 59, 92, 0.65);
+    box-shadow: 0 0 30px rgba(255, 59, 92, 0.12);
+}
+
+.game-container.game-over .simon-board {
+    filter: drop-shadow(0 0 12px #ff3b5c);
+}
+
+.game-container.game-over #message {
+    color: #ff5475;
+    animation: messagePulse 0.5s ease-in-out 2;
+}
+
+@keyframes gameOverShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+}
+
+@keyframes messagePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* ========================================
+   13. MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 420px) {
+    body {
+        padding: 14px;
+    }
+
+    .game-container {
+        padding: 25px 17px;
+        border-radius: 23px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 0.82rem;
+    }
+
+    .simon-board {
+        padding: 9px;
+        gap: 9px;
+    }
+
+    .stat-box strong {
+        font-size: 1.5rem;
+    }
+
+    .game-options {
+        gap: 9px;
+    }
+}
+
+/* ========================================
+   14. REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== Victory Animation ===== */
+
+.game-container.victory {
+    animation: victoryGlow 1s ease-in-out infinite alternate;
+    border-color: #d66bff;
+}
+
+.game-container.victory .simon-board {
+    animation: boardCelebrate 0.7s ease-in-out 3;
+    filter: drop-shadow(0 0 20px #d66bff);
+}
+
+.game-container.victory h1 {
+    animation: titleCelebrate 0.6s ease-in-out 3;
+}
+
+.victory-title {
+    color: #ffd76a !important;
+    font-size: 1.5rem !important;
+    font-weight: 900;
+    text-shadow: 0 0 20px #ffbf47;
+    animation: winPop 0.6s ease-out;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 16px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes victoryGlow {
+    from {
+        box-shadow: 0 0 15px #9b4dff;
+    }
+
+    to {
+        box-shadow: 0 0 45px #ff4fa3;
+    }
+}
+
+@keyframes boardCelebrate {
+    50% {
+        transform: scale(1.06) rotate(3deg);
+    }
+}
+
+@keyframes titleCelebrate {
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes winPop {
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
